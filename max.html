@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    const startTime = performance.now();
+
+    let number1 = prompt("Enter the first number: ");
+    let number2 = prompt("Enter the second number: ");
+    let number3 = prompt("Enter the third number: ");
+    number1 = parseFloat(number1);
+    number2 = parseFloat(number2);
+    number3 = parseFloat(number3);
+    if (number1 >= number2 && number1 >= number3) {
+        var maxNumber = number1;
+    } else if (number2 >= number1 && number2 >= number3) {
+        var maxNumber = number2;
+    } else {
+        var maxNumber = number3;
+    }
+    // minimum number
+    if (number1 <= number2 && number1 <= number3) {
+        var minNumber = number1;
+    } else if (number2 <= number1 && number2 <= number3) {
+        var minNumber = number2;
+    } else {
+       var minNumber = number3;
+    }
+    document.write("The maximum number is: " + maxNumber + "<br>");
+    document.write("The minimum number is: " + minNumber);
+    const endTime = performance.now();
+    const timeTaken = endTime - startTime;
+
+   alert(`Execution time: ${timeTaken} milliseconds`);
+
+    
+    </script>
+    
+</body>
+</html>
