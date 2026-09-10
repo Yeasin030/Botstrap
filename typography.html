@@ -6,6 +6,32 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        // Your JavaScript code here
+        const car =["BMW", "Volvo", "Saab", "Ford"];
+        //for loop to iterate through the array and display each car brand
+        for (let i = 0; i < car.length; i++) {
+        
+            document.write(car[i] + "<br>");
+        
+        }
+        // while loop to iterate through the array and display each car brand
+
+        let text = "<table><tr><th>SL No.</th><th>Car brand</th><th>wonar</th></tr>";
+        
+        let i = 0;
+        let wonar = ["Alice", "Bob", "Charlie", "David"];
+        
+
+        while (i < car.length) {
+
+            text += "<tr><td>" + (i + 1) + "</td><td>" + car[i] +"</td><td>" + wonar[i]+ "</td></tr>";
+            i++;
+        
+        }
+        text += "</table>";
+        document.write(text);
+
+    </script>
 </body>
 </html>

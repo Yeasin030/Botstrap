@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            align-items: center;
+            background: linear-gradient(135deg, #e0f2fe, #f8fafc 55%, #dbeafe);
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            min-height: 100vh;
+            padding: 24px;
+        }
+
+        .calculator {
+            background: #172033;
+            border-radius: 24px;
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
+            max-width: 360px;
+            padding: 22px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #f8fafc;
+            font-size: 1.2rem;
+            margin: 0 0 16px;
+        }
+
+        #display {
+            background: #0f172a;
+            border: 0;
+            border-radius: 14px;
+            color: #f8fafc;
+            font-size: 2.4rem;
+            margin-bottom: 18px;
+            outline: 0;
+            padding: 18px 14px;
+            text-align: right;
+            width: 100%;
+        }
+
+        .keys {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        button {
+            background: #334155;
+            border: 0;
+            border-radius: 12px;
+            color: #f8fafc;
+            cursor: pointer;
+            font-size: 1.25rem;
+            min-height: 58px;
+            transition: filter 120ms ease, transform 120ms ease;
+        }
+
+        button:hover {
+            filter: brightness(1.18);
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        .operator {
+            background: #0ea5a4;
+        }
+
+        .clear {
+            background: #e76f51;
+        }
+
+        .equals {
+            background: #2563eb;
+        }
+
+        .zero {
+            grid-column: span 2;
+        }
+    </style>
+</head>
+<body>
+    <main class="calculator" aria-label="Calculator">
+        <h1>Calculator</h1>
+        <input id="display" type="text" value="0" aria-label="Calculator display" readonly>
+        <section class="keys">
+            <button class="clear" data-action="clear">AC</button>
+            <button data-action="backspace">DEL</button>
+            <button class="operator" data-value="%">%</button>
+            <button class="operator" data-value="/">÷</button>
+            <button data-value="7">7</button>
+            <button data-value="8">8</button>
+            <button data-value="9">9</button>
+            <button class="operator" data-value="*">×</button>
+            <button data-value="4">4</button>
+            <button data-value="5">5</button>
+            <button data-value="6">6</button>
+            <button class="operator" data-value="-">−</button>
+            <button data-value="1">1</button>
+            <button data-value="2">2</button>
+            <button data-value="3">3</button>
+            <button class="operator" data-value="+">+</button>
+            <button class="zero" data-value="0">0</button>
+            <button data-value=".">.</button>
+            <button class="equals" data-action="calculate">=</button>
+        </section>
+    </main>
+
+    <script>
+        const display = document.querySelector('#display');
+        const keys = document.querySelector('.keys');
+
+        function calculate() {
+            const expression = display.value;
+            if (!/^[0-9+*/%. -]+$/.test(expression)) return;
+
+            try {
+                const result = Function(`"use strict"; return (${expression})`)();
+                display.value = Number.isFinite(result) ? String(result) : 'Error';
+            } catch {
+                display.value = 'Error';
+            }
+        }
+
+        function addValue(value) {
+            if (display.value === '0' || display.value === 'Error') display.value = '';
+            display.value += value;
+        }
+
+        keys.addEventListener('click', (event) => {
+            const button = event.target.closest('button');
+            if (!button) return;
+
+            if (button.dataset.action === 'clear') display.value = '0';
+            else if (button.dataset.action === 'backspace') display.value = display.value.slice(0, -1) || '0';
+            else if (button.dataset.action === 'calculate') calculate();
+            else addValue(button.dataset.value);
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (/^[0-9+*/%.\-]$/.test(event.key)) addValue(event.key);
+            else if (event.key === 'Enter' || event.key === '=') calculate();
+            else if (event.key === 'Escape') display.value = '0';
+            else if (event.key === 'Backspace') display.value = display.value.slice(0, -1) || '0';
+        });
+    </script>
+</body>
+</html>
