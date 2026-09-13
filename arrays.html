@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,4 +36,74 @@
      </script>
 
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="result">
+    </div>
+    <form action="" name="myform">
+        <input type="text" name="fname" placeholder="Enter first number"> <br> <br>
+        <input type="text" name="sname" placeholder="Enter second number"> <br> <br>
+        <input type="button" onclick="fullname()" name="submit" value="Submit">
+    </form>
+    <!-- <script>
+        
+        let fruits = ["Apple", "Banana", "Orange"];
+        fruits.push("Car")
+        document.write(fruits);
+        
+    </script> -->
+    <!-- <script>
+        const zoo = new Array("Lion", "Tiger", "Bear");
+        zoo.sort();
+        document.write(zoo);
+
+    </script> -->
+    <!-- <script>
+        const zoo = new Array("Lion", "Tiger", "Bear");
+        zoo.reverse();
+        document.write(zoo);
+        document.write("<br>");
+         const zoo1 = ["Dog", "Cat", "Elephant", "Giraffe", "Zebra", "Monkey", "Kangaroo", "Panda", "Koala", "Penguin"];
+         const parts = zoo1.slice(-5);
+         document.write(parts);
+    </script> -->
+    <!-- <script>
+        function primenumber(n) {
+            if (n === 1) {
+                return "is not prime";
+            }
+            else if (n === 2) {
+                return "is prime";
+            }
+            else {
+                for (let i = 2; i < n; i++) {
+                    if (n % i === 0) {
+                        return "is not prime";
+                    }
+                }
+                return "is prime";
+            }
+        }
+
+        document.write(primenumber(16));
+    </script> -->
+    <script>
+
+        function fullname() {
+            let fname = document.myform.fname.value;
+            let sname = document.myform.sname.value;
+            let full = fname + " " + sname;
+            document.getElementById("result").innerHTML = full;
+
+        }
+    </script>
+</body>
+>>>>>>> e7e98957b9feda7ab3ce1d821fb4e5745f43ce7a
 </html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,4 +37,44 @@
     </script>
     
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function primenumber(n){
+            if (n <= 1) return false;
+
+        for (let i = 2; i * i <= n; i++) {
+        if (n % i === 0) return false;
+    }
+    return true;
+
+        }
+        // \(n! = n \times (n - 1) \times (n - 2) \times \ldots \times 1 \)
+        function factorial(n) {
+            if (n === 0) return 1;
+            return n * factorial(n - 1);
+        }
+    </script>
+</head>
+<body>
+    <script>
+        
+         let number = Number(prompt("Enter your number : "));
+        // if (primenumber(number)){
+        //     alert("This is a prime number");
+        // }
+        // else{
+        //     alert("This is not a prime number");
+        // }
+        let fact = factorial(number);
+        alert("Factorial of " + number + " is " + fact);
+    </script>
+    
+</body>
+>>>>>>> e7e98957b9feda7ab3ce1d821fb4e5745f43ce7a
 </html>
