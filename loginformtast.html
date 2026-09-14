@@ -6,13 +6,20 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="result">
-    </div>
-    <form action="" name="loginform" onsubmit="return login()">
+    <form action="" name="loginform">
         <input type="text" name="username" placeholder="Enter username"> <br> <br>
         <input type="password" name="password" placeholder="Enter password" > <br> <br>
         <input type="text" name="email" placeholder="Email"> <br> <br>
-        <input type="submit"  name="submit" value="Login">
+        Gender <br>
+        <input type="radio" name="gender" value="male">Male 
+        <input type="radio" name="gender" value="female">Female 
+        <br>
+        Dictric <br>
+        <select name="distric">
+            <option value="dhaka">Dhaka</option>
+            <option value="chittagonj">Chittagonj</option>
+        </select> <br><br>
+        <input type="button" onclick="login()" id="submit" name="open" value="open">
     </form>
  <script>
     
@@ -20,8 +27,20 @@
             let username = document.loginform.username.value;
             let password = document.loginform.password.value;
             let email = document.loginform.email.value;
-            let valid = false;
-            email.match()
+            let gender = document.loginform.gender.value;
+            let distric= document.loginform.distric.value;
+            let otput = "<div class= 'blue'>"
+                otput += "" + username +"<br>"
+                otput += "" + password + "<br>"
+                otput += "" + gender + "<br>"
+                otput += "" + distric + "<br>"
+                otput += "</div>"
+
+               login = window.open("","","height:300,width :400");
+               login.document.write(otput);
+
+            //let valid = false;
+            // email.match()
             // if (username.length < 6){
             //     alert("username must be greater than 6 characters");
             //     valid = false;
@@ -46,10 +65,12 @@
             // }
 
             
-            let full = username + " " + password + " " + email;
-            document.getElementById("result").innerHTML = full;
+            //let full = username + " " + password + " " + email;
         }
+         
+
+
+    
     </script>
- </script>
 </body>
 </html>
